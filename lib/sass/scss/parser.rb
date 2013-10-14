@@ -1016,8 +1016,7 @@ MESSAGE
       def self.sass_script_parser; @sass_script_parser; end
 
       def sass_script(*args)
-        parser = self.class.sass_script_parser.new(@scanner, @line,
-          @scanner.pos - (@scanner.string[0...@scanner.pos].rindex("\n") || 0))
+        parser = self.class.sass_script_parser.new(@scanner, @line, 0)
         result = parser.send(*args)
         unless @strs.empty?
           # Convert to CSS manually so that comments are ignored.
